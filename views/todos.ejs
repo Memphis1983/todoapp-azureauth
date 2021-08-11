@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Todos</h1>
+    <ul>
+    <!-- iterates through each todo element, if the items microsoftID equals/matches to the user's microsftID 
+    it createes a new li element for each todo item added -->
+    <% todos.forEach( el => { %>
+        <% if(el.microsoftId === user.microsoftId){  %>
+        <!-- data-id attribute is added and given the value of the element's microsoftID, so each of these ID's will be unique for later use -->
+            <li class='todoItem' data-id='<%=el._id%>'>
+            <!-- the element is then given a class of "completed if it checks as true or given a class of "not" -->
+                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+                <span class='del'> Delete </span>
+            </li>
+        <% }  %>
+    <% }) %>    
+    </ul>
+<!-- the user's display name is pulled from the Azure's server and added here with the number of items left.  --> 
+    <h2><%= user.displayName %> has <%= left %> things left to do.</h2>
+
+    <form action="/todos/createTodo" method='POST'>
+        <input type="text" placeholder="Enter Todo Item" name='todoItem'>
+        <input type="submit">
+    </form>
+
+    <a href="../auth/logout">Logout</a>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
