@@ -1,8 +1,9 @@
 const express = require('express')
 const passport = require('passport')
-const config = require('../config/config')
+const config = require('../config')
 const router = express.Router()
 
+// hello world
 
 router.get('/login',
   function(req, res, next) {

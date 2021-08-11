@@ -1,15 +1,18 @@
+
+require('dotenv').config({path: './config/.env'})
+
 exports.creds = {
     identityMetadata: 'https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration',
  
-    clientID: `process.env.CLIENT_ID`,
+    clientID: process.env.CLIENT_ID,
 
-    clientSecret: `process.env.CLIENT_SECRET`,
+    clientSecret: process.env.CLIENT_SECRET,
 
     responseType: 'code id_token',
 
     responseMode: 'form_post',
 
-    redirectUrl: 'http://localhost:2121/auth/openid/return',
+    redirectUrl: 'https://agile-scrubland-05365.herokuapp.com/auth/openid/return',
 
     allowHttpForRedirectUrl: true,
 
@@ -37,7 +40,7 @@ exports.creds = {
     clockSkew: null,
 };
 
-exports.destroySessionUrl = 'http://localhost:2121';
+exports.destroySessionUrl = 'https://agile-scrubland-05365.herokuapp.com/';
 
 exports.useMongoDBSessionStore = false;
 
